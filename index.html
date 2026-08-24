@@ -216,9 +216,6 @@ h1{
   outline-offset:2px;
 }
 
-/* =========================================================
-   BOUTON JEU
-========================================================= */
   /* =========================================================
    BOUTON JEU — ANIMATION
 ========================================================= */
@@ -1318,14 +1315,48 @@ h1{
         id="suggestions">
       </div>
 
-      <button
-        class="game-launch"
-        type="button"
-        onclick="startEscapeGame()">
+      button
+  class="game-launch"
+  type="button"
+  onclick="startEscapeGame()">
 
-        🕵️ Envie de jouer ? — Ouvrir le dossier fantôme
+  <span class="game-launch-text">
+    🕵️ Envie de jouer ? — Ouvrir le dossier fantôme
+  </span>
 
-      </button>
+</button>
+      .game-launch-text{
+  position:relative;
+  z-index:2;
+  display:inline-block;
+  animation:gameTextAttention 3.5s ease-in-out infinite;
+}
+
+@keyframes gameTextAttention{
+
+  0%,
+  55%,
+  100%{
+    transform:scale(1);
+  }
+
+  60%{
+    transform:scale(1.02);
+  }
+
+  65%{
+    transform:scale(1);
+  }
+
+  70%{
+    transform:scale(1.02);
+  }
+
+  75%{
+       transform:scale(1);
+  }
+
+}
 
     </section>
 
