@@ -219,6 +219,9 @@ h1{
 /* =========================================================
    BOUTON JEU
 ========================================================= */
+  /* =========================================================
+   BOUTON JEU — ANIMATION
+========================================================= */
 
 .game-launch{
   margin-top:18px;
@@ -230,22 +233,92 @@ h1{
   color:#fff;
   font-weight:800;
   font-size:15px;
-  line-height:1.35;
-  background:
-    linear-gradient(
-      135deg,
-      #2457a6,
-      #173d78
-    );
+  background:linear-gradient(
+    135deg,
+    #2457a6,
+    #173d78
+  );
+  box-shadow:0 8px 20px rgba(36,87,166,.22);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Effet lumineux qui traverse le bouton */
+.game-launch::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:70%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.30),
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:gameShine 3.5s ease-in-out infinite;
+}
+
+/* Le texte reste au-dessus de l'effet */
+.game-launch{
+  isolation:isolate;
+}
+
+.game-launch::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:15px;
   box-shadow:
-    0 8px 20px rgba(36,87,166,.22);
-  transition:.18s ease;
+    0 0 0 0 rgba(255,255,255,.18);
+  animation:gamePulse 3.5s ease-in-out infinite;
+  pointer-events:none;
 }
 
 .game-launch:hover{
   transform:translateY(-2px);
   box-shadow:
-    0 12px 25px rgba(36,87,166,.28);
+    0 12px 25px rgba(36,87,166,.30);
+}
+
+/* Animation lumineuse */
+@keyframes gameShine{
+
+  0%{
+    left:-120%;
+  }
+
+  35%,
+  100%{
+    left:150%;
+  }
+
+}
+
+/* Petit halo */
+@keyframes gamePulse{
+
+  0%,
+  65%,
+  100%{
+    box-shadow:
+      0 0 0 0 rgba(255,255,255,0);
+  }
+
+  75%{
+    box-shadow:
+      0 0 0 5px rgba(255,255,255,.08);
+  }
+
+  85%{
+    box-shadow:
+      0 0 0 9px rgba(255,255,255,0);
+  }
 }
 
 /* =========================================================
